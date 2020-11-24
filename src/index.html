@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TailWind Test</title>
+    <link rel="stylesheet" href="./css/styles.css" />
+    <script>
+      if (
+        localStorage.theme === "dark" ||
+        (!("theme" in localStorage) &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ) {
+        document.querySelector("html").classList.add("dark");
+      } else {
+        document.querySelector("html").classList.remove("dark");
+      }
+    </script>
+  </head>
+  <body class="bg-gray-100 dark:bg-gray-700">
+    <div
+      class="m-3 p-6 shadow-md flex justify-between rounded-lg bg-white dark:bg-gray-600 max-w-xl mx-auto items-center"
+    >
+      <div class="flex space-x-4">
+        <div class="flex-shrink-0 text-blue-700 dark:text-blue-100">
+          <svg
+            class="w-12 h-12"
+            transform="scale(-1, 1) translate(0, -5)"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z"
+              clip-rule="evenodd"
+            ></path>
+          </svg>
+        </div>
+        <div>
+          <div class="text-xl font-bold text-blue-700 dark:text-blue-100">
+            Notification
+          </div>
+          <p class="text-gray-500 dark:text-gray-400">
+            You have a notification
+          </p>
+        </div>
+      </div>
+
+      <button
+        id="switch-theme"
+        class="h-10 w-10 flex justify-center items-center focus:outline-none dark:text-blue-700 text-blue-100 dark:bg-gray-100 bg-gray-400 rounded-lg"
+      >
+        <svg
+          class="w-6 h-6"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
+          ></path>
+        </svg>
+        <svg
+          class="w-6 h-6 hidden"
+          fill="currentColor"
+          viewBox="0 0 20 20"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"
+          ></path>
+        </svg>
+      </button>
+    </div>
+    <div
+      class="m-3 p-6 shadow-md flex justify-between rounded-lg bg-white dark:bg-gray-600 max-w-xl mx-auto items-center"
+    >
+      <form class="space-x-2">
+        <input placeholder="Enter Your Email Address Here" class="my-input" />
+        <button
+          class="dark:bg-blue-100 dark:text-gray-700 bg-gray-300 text-blue-600 font-bold px-2 py-2 rounded-lg"
+        >
+          Sign Me up
+        </button>
+      </form>
+    </div>
+    <script>
+      const button = document.querySelector("#switch-theme");
+      const sun = button.firstElementChild;
+      const moon = button.lastElementChild;
+      if (document.querySelector("html").classList.contains("dark")) {
+        sun.classList.remove("hidden");
+        moon.classList.add("hidden");
+      } else {
+        moon.classList.remove("hidden");
+        sun.classList.add("hidden");
+      }
+      const toggle = (elm) =>
+        elm.classList.contains("hidden")
+          ? elm.classList.remove("hidden")
+          : elm.classList.add("hidden");
+      button.addEventListener("click", () => {
+        let htmlClasses = document.querySelector("html").classList;
+        if (localStorage.theme === "dark") {
+          htmlClasses.remove("dark");
+          localStorage.removeItem("theme");
+        } else {
+          htmlClasses.add("dark");
+          localStorage.theme = "dark";
+        }
+        toggle(sun);
+        toggle(moon);
+      });
+    </script>
+  </body>
+</html>

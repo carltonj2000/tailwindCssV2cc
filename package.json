@@ -4,7 +4,8 @@
   "description": "Tailwind CSS v2.0 Crash Course",
   "main": "index.js",
   "scripts": {
-    "dev": "tailwind build css/styles.css -o css/dist.css"
+    "dev": "tailwind build ./css/styles.css -o ./src/css/styles.css",
+    "build": "NODE_ENV=production tailwind build ./css/styles.css -o ./src/css/styles.css"
   },
   "keywords": [],
   "author": "",
