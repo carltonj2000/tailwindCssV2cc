@@ -1,0 +1,20 @@
+{
+  "name": "tailwindCssV2cc",
+  "version": "1.0.0",
+  "description": "Tailwind CSS v2.0 Crash Course",
+  "main": "index.js",
+  "scripts": {
+    "dev": "tailwind build css/styles.css -o css/dist.css"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "autoprefixer": "^10.0.2",
+    "postcss": "^8.1.10",
+    "tailwindcss": "^2.0.1"
+  },
+  "devDependencies": {
+    "tailwindcss-cli": "^0.1.2"
+  }
+}
